@@ -1,0 +1,33 @@
+@import "../../../assets/styles/variables/colors";
+
+.nav-link {
+    padding: 12px;
+    margin-bottom: 34px;
+
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $light_blue;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: $dark_pink;
+
+        svg {
+            fill: $pink;
+        }
+    }
+
+    svg {
+        fill: $light_blue;
+
+        width: 24px;
+        height: 24px;
+
+        transition: all 0.2s ease-in-out;
+    }
+}

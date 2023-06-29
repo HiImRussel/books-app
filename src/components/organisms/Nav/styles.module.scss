@@ -1,0 +1,14 @@
+@import "../../../assets/styles/variables/colors";
+
+.nav {
+    position: sticky;
+    top: 0;
+
+    width: 96px;
+    height: 100vh;
+    box-sizing: border-box;
+
+    padding: 40px 24px;
+
+    background-color: $light_purple;
+}
