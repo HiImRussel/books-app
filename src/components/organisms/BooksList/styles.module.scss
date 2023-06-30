@@ -1,0 +1,29 @@
+@import "../../../assets/styles/variables/colors";
+
+.books-list {
+    width: 100%;
+
+    &__title {
+        color: $main-font;
+        font-size: 24px;
+        font-weight: 500;
+
+        margin-bottom: 24px;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    &__books {
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        div {
+            margin-right: 16px;
+            margin-bottom: 16px;
+        }
+    }
+}

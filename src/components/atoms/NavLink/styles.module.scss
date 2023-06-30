@@ -12,14 +12,10 @@
 
     color: $light_blue;
 
-    transition: all 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
 
     &:hover {
-        background-color: $dark_pink;
-
-        svg {
-            fill: $pink;
-        }
+        background-color: $hover;
     }
 
     svg {
@@ -28,6 +24,18 @@
         width: 24px;
         height: 24px;
 
-        transition: all 0.2s ease-in-out;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    &--active {
+        background-color: $dark_pink;
+
+        svg {
+            fill: $pink;
+        }
+
+        &:hover {
+            background-color: $dark_pink;
+        }
     }
 }

@@ -1,0 +1,77 @@
+@import "../../../assets/styles/variables/colors";
+
+.book-box {
+    $root: &;
+    width: 192px;
+    box-sizing: content-box;
+
+    position: relative;
+
+    background-color: $light_purple;
+
+    border-radius: 4px;
+    border: 1px solid $hover;
+
+    &:hover {
+        #{$root}__btns-wrapper {
+            opacity: 1;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: 154px;
+
+        border-radius: 4px;
+    }
+
+    &__content {
+        width: 192px;
+
+        padding: 8px;
+
+        overflow: hidden;
+    }
+
+    &__title {
+        width: calc(100% - 16px);
+
+        margin: 0;
+        margin-bottom: 8px;
+
+        overflow: hidden;
+
+        color: $main-font;
+        font-size: 16px;
+        font-weight: 500;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    &__description {
+        width: calc(100% - 16px);
+
+        margin: 0;
+
+        overflow: hidden;
+
+        color: $secondary-font;
+        font-size: 12px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    &__btns-wrapper {
+        opacity: 0;
+
+        transition: opacity 0.3s ease-in-out;
+    }
+}

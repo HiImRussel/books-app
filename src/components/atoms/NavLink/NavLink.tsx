@@ -1,5 +1,8 @@
 /** React router */
-import { Link } from "react-router-dom";
+import { NavLink as RouterNavLink } from "react-router-dom";
+
+/** Class names */
+import classNames from "classnames";
 
 /** Styles */
 import styles from "./styles.module.scss";
@@ -12,9 +15,16 @@ const NavLink = (props: LinkProps) => {
     const { children } = props;
 
     return (
-        <Link {...props} className={styles["nav-link"]}>
+        <RouterNavLink
+            {...props}
+            className={({ isActive }) =>
+                classNames(`${styles["nav-link"]}`, {
+                    [`${styles["nav-link--active"]}`]: isActive,
+                })
+            }
+        >
             {children}
-        </Link>
+        </RouterNavLink>
     );
 };
 

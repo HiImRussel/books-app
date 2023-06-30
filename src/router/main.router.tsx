@@ -2,8 +2,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
 /** Pages */
-import MainPage from "../pages/main/MainPage";
-import Page404 from "../pages/page404/Page404";
+import MainPage from "../pages/Main/MainPage";
+import Page404 from "../pages/Page404/Page404";
+import HomeView from "../pages/HomeView/HomeView";
+import FavouritiesView from "../pages/FavouritiesView/FavouritiesView";
 
 const router = createBrowserRouter([
     { path: "*", element: <Page404 /> },
@@ -11,8 +13,8 @@ const router = createBrowserRouter([
         path: "/",
         element: <MainPage />,
         children: [
-            { path: "", element: <div>Home</div> },
-            { path: "library", element: <div>Library</div> },
+            { path: "", element: <HomeView /> },
+            { path: "library", element: <FavouritiesView /> },
         ],
     },
 ]);
