@@ -14,7 +14,7 @@ const initialState: ModalState = {
 };
 
 export const pdfModalSlice = createSlice({
-    name: "favourities",
+    name: "pdfModal",
     initialState,
     reducers: {
         toggleModal: (state, action: PayloadAction<ModalState>) =>

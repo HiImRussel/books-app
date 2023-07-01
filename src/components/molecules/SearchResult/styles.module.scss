@@ -1,0 +1,96 @@
+@import "../../../assets/styles/variables/colors";
+
+.search-result {
+    $root: &;
+    display: flex;
+
+    padding: 16px 0;
+    align-items: center;
+
+    width: 100%;
+
+    border-top: 1px solid $light_blue;
+
+    &:nth-of-type(1) {
+        border-top: 0;
+    }
+
+    &:hover {
+        #{$root}__buttons {
+            opacity: 1;
+        }
+    }
+
+    &__img {
+        width: 64px;
+        height: 64px;
+
+        margin-right: 16px;
+
+        border-radius: 4px;
+    }
+
+    &__col-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+    }
+
+    &__info {
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        max-width: 200px;
+    }
+
+    &__title {
+        width: 100%;
+        overflow: hidden;
+
+        font-size: 16px;
+        font-weight: 500;
+        color: $main-font;
+
+        margin: 0;
+        margin-bottom: 8px;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    &__description {
+        width: 100%;
+        overflow: hidden;
+
+        font-size: 14px;
+        font-weight: 400;
+        color: $secondary-font;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        margin: 0;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+
+        opacity: 0;
+
+        transition: opacity 0.2s ease-in-out;
+    }
+}

@@ -1,3 +1,9 @@
+/** Redux */
+import { useDispatch } from "react-redux";
+
+/** Store */
+import { toggleSeachModal } from "../../../store/slices/searchModal.slice";
+
 /** Icons */
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
 
@@ -5,8 +11,14 @@ import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
 import styles from "./styles.module.scss";
 
 const SearchToggle = () => {
+    /** Store */
+    const dispatch = useDispatch();
+
+    /** Handlers */
+    const handleOpenSearch = () => dispatch(toggleSeachModal(true));
+
     return (
-        <div className={styles["search-toggle"]}>
+        <div className={styles["search-toggle"]} onClick={handleOpenSearch}>
             <SearchIcon />
         </div>
     );

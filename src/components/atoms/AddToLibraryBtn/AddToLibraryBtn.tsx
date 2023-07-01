@@ -11,18 +11,20 @@ import { ReactComponent as CancelIcon } from "../../../assets/icons/cross-small.
 /** Styles */
 import styles from "./styles.module.scss";
 
-/** Types */
-import type { RootState } from "../../../store/root.store";
+/** React */
 import { useMemo } from "react";
+
+/** Types */
+import { CSSProperties } from "react";
+import type { RootState } from "../../../store/root.store";
 interface AddToLibraryBtnProps {
-    top: string;
-    left: string;
     book: Book;
+    style?: CSSProperties;
 }
 
 const AddToLibraryBtn = (props: AddToLibraryBtnProps) => {
     /** Props */
-    const { top, left, book } = props;
+    const { style, book } = props;
 
     /** Store */
     const { books } = useSelector((state: RootState) => state.favourities);
@@ -40,7 +42,7 @@ const AddToLibraryBtn = (props: AddToLibraryBtnProps) => {
     return (
         <div
             className={styles["add-to-library-btn"]}
-            style={{ top, left }}
+            style={style}
             onClick={handleAddClick}
         >
             {isFavourite ? <CancelIcon /> : <AddIcon />}

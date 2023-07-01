@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 /** Store */
 import { toggleModal } from "../../../store/slices/pdfModal.slice";
+import { toggleSeachModal } from "../../../store/slices/searchModal.slice";
 
 /** Incons */
 import { ReactComponent as ReadBookIcon } from "../../../assets/icons/book-alt.svg";
@@ -11,27 +12,29 @@ import { ReactComponent as ReadBookIcon } from "../../../assets/icons/book-alt.s
 import styles from "./styles.module.scss";
 
 /** Types */
+import type { CSSProperties } from "react";
 interface ReadBookBtnProps {
-    top: string;
-    left: string;
+    style?: CSSProperties;
     pdfURL: string;
 }
 
 const ReadBookBtn = (props: ReadBookBtnProps) => {
     /** Props */
-    const { top, left, pdfURL } = props;
+    const { style, pdfURL } = props;
 
     /** Store */
     const dispatch = useDispatch();
 
     /** Handlers */
-    const handleReadClick = () =>
+    const handleReadClick = () => {
+        dispatch(toggleSeachModal(false));
         dispatch(toggleModal({ isOpen: true, pdfURL: pdfURL }));
+    };
 
     return (
         <div
             className={styles["read-book-btn"]}
-            style={{ top, left }}
+            style={style}
             onClick={handleReadClick}
         >
             <ReadBookIcon />

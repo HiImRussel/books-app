@@ -1,0 +1,23 @@
+@import "../../../assets/styles/variables/colors";
+
+.search-input {
+    &__icon {
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-left: 1px solid $light_blue;
+
+        cursor: pointer;
+
+        svg {
+            width: 24px;
+            height: 24px;
+
+            fill: $light_blue;
+        }
+    }
+}

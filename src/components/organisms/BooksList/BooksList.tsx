@@ -26,7 +26,15 @@ const BooksList = (props: BooksListProps) => {
     return (
         <div className={styles["books-list"]}>
             <h2 className={styles["books-list__title"]}>{title}</h2>
-            <div className={styles["books-list__books"]}>{booksList}</div>
+            <div className={styles["books-list__books"]}>
+                {booksList.length > 0 ? (
+                    booksList
+                ) : (
+                    <span className={styles["books-list__no-content"]}>
+                        No content
+                    </span>
+                )}
+            </div>
         </div>
     );
 };
