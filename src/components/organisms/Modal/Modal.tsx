@@ -3,6 +3,7 @@ import { useRef } from "react";
 
 /** Hooks */
 import useOutsideClick from "../../../hooks/useClickOutside";
+import useEscapeClick from "../../../hooks/useEscapeClick";
 
 /** Styles */
 import CloseBtn from "../../atoms/CloseBtn/CloseBtn";
@@ -36,6 +37,7 @@ const Modal = (props: ModalProps) => {
 
     /** Hooks */
     useOutsideClick(contentRef, handleClose);
+    useEscapeClick(handleClose);
 
     if (!isOpen) return null;
 

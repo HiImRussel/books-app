@@ -1,0 +1,45 @@
+@import "../../../assets/styles/variables/colors";
+
+.pagination {
+    display: flex;
+
+    border-radius: 4px;
+
+    overflow: hidden;
+    border: 1px solid $light_blue;
+
+    height: 40px;
+    box-sizing: border-box;
+
+    background-color: $light_purple;
+    justify-content: space-between;
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 32px;
+        height: 100%;
+
+        padding: 8px;
+
+        background-color: transparent;
+        border: 0;
+
+        &--decrement {
+            border-right: 1px solid $light_blue;
+        }
+
+        &--increment {
+            border-left: 1px solid $light_blue;
+        }
+    }
+
+    &__content {
+        min-width: 100px;
+        padding: 8px;
+
+        text-align: center;
+    }
+}

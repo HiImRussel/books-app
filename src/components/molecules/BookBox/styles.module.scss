@@ -1,3 +1,4 @@
+@import "../../../assets/styles/variables//breakpoints";
 @import "../../../assets/styles/variables/colors";
 
 .book-box {
@@ -16,6 +17,10 @@
         #{$root}__btns-wrapper {
             opacity: 1;
         }
+    }
+
+    @media only screen and (max-width: $breakpoint_mobile) {
+        width: 100%;
     }
 
     &__image {
@@ -72,6 +77,17 @@
     &__btns-wrapper {
         opacity: 0;
 
+        display: flex;
+        align-items: flex-end;
+
+        position: absolute;
+        top: 100px;
+        right: 24px;
+
         transition: opacity 0.3s ease-in-out;
+
+        @media only screen and (max-width: $breakpoint_mobile) {
+            opacity: 1;
+        }
     }
 }

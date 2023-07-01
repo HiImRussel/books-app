@@ -20,14 +20,8 @@ const BookBox = (props: BookBoxProps) => {
             <img src={img} className={styles["book-box__image"]} />
 
             <div className={styles["book-box__btns-wrapper"]}>
-                <AddToLibraryBtn
-                    style={{ top: "123px", left: "112px" }}
-                    book={book}
-                />
-                <ReadBookBtn
-                    style={{ top: "107px", left: "144px" }}
-                    pdfURL={book.pdf}
-                />
+                <AddToLibraryBtn book={book} />
+                <ReadBookBtn pdfURL={book.pdf} style={{ marginLeft: "8px" }} />
             </div>
 
             <div className={styles["book-box__content"]}>

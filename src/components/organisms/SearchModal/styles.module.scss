@@ -1,5 +1,13 @@
+@import "../../../assets/styles/variables//breakpoints";
+
 .search-modal {
     width: 60vw;
 
     position: relative;
+
+    margin-bottom: 70%;
+
+    @media only screen and (max-width: $breakpoint_mobile) {
+        width: calc(100vw - 16px);
+    }
 }

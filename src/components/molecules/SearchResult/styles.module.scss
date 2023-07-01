@@ -1,3 +1,4 @@
+@import "../../../assets/styles/variables//breakpoints";
 @import "../../../assets/styles/variables/colors";
 
 .search-result {
@@ -46,35 +47,19 @@
         justify-content: center;
 
         max-width: 200px;
-    }
 
-    &__title {
-        width: 100%;
-        overflow: hidden;
+        margin-right: 16px;
 
-        font-size: 16px;
-        font-weight: 500;
-        color: $main-font;
-
-        margin: 0;
-        margin-bottom: 8px;
-
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        &:first-letter {
-            text-transform: uppercase;
+        @media only screen and (max-width: $breakpoint_mobile) {
+            max-width: 60px;
         }
     }
 
+    &__title,
     &__description {
         width: 100%;
         overflow: hidden;
 
-        font-size: 14px;
-        font-weight: 400;
-        color: $secondary-font;
-
         text-overflow: ellipsis;
         white-space: nowrap;
 
@@ -83,6 +68,20 @@
         &:first-letter {
             text-transform: uppercase;
         }
+    }
+
+    &__title {
+        font-size: 16px;
+        font-weight: 500;
+        color: $main-font;
+
+        margin-bottom: 8px;
+    }
+
+    &__description {
+        font-size: 14px;
+        font-weight: 400;
+        color: $secondary-font;
     }
 
     &__buttons {
@@ -92,5 +91,9 @@
         opacity: 0;
 
         transition: opacity 0.2s ease-in-out;
+
+        @media only screen and (max-width: $breakpoint_mobile) {
+            opacity: 1;
+        }
     }
 }

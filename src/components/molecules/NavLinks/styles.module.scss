@@ -1,3 +1,5 @@
+@import "../../../assets/styles/variables//breakpoints";
+
 .nav-links {
     display: flex;
     flex-direction: column;
@@ -5,4 +7,11 @@
     justify-content: center;
 
     margin-top: 72px;
+
+    @media only screen and (max-width: $breakpoint_mobile) {
+        flex-direction: row;
+        margin: 0 32px;
+
+        width: 100%;
+    }
 }

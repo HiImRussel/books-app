@@ -1,3 +1,4 @@
+@import "../../../assets/styles/variables//breakpoints";
 @import "../../../assets/styles/variables/colors";
 
 .books-list {
@@ -24,6 +25,10 @@
         div {
             margin-right: 16px;
             margin-bottom: 16px;
+
+            @media only screen and (max-width: $breakpoint_mobile) {
+                margin-right: 0;
+            }
         }
     }
 

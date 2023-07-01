@@ -1,3 +1,4 @@
+@import "../../../assets/styles/variables//breakpoints";
 @import "../../../assets/styles/variables/colors";
 
 .nav-link {
@@ -16,6 +17,11 @@
 
     &:hover {
         background-color: $hover;
+    }
+
+    @media only screen and (max-width: $breakpoint_mobile) {
+        margin: 0;
+        margin-right: 24px;
     }
 
     svg {

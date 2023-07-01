@@ -3,6 +3,10 @@ import { useState } from "react";
 
 /** React PDF */
 import { Document, Page } from "react-pdf";
+import Pagination from "../../atoms/Pagination/Pagination";
+
+/** Styles */
+import styles from "./styles.module.scss";
 
 /** Types */
 interface ReaderPDFProps {
@@ -13,15 +17,16 @@ const ReaderPDF = (props: ReaderPDFProps) => {
     /** Props */
     const { pdfURL } = props;
 
-    const [numPages, setNumPages] = useState<number | null>(null);
+    const [numPages, setNumPages] = useState(0);
     const [pageNumber, setPageNumber] = useState(1);
 
-    function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
+    /** Handlers */
+    const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
         setNumPages(numPages);
-    }
+    };
 
     return (
-        <div>
+        <div className={styles["reader-pdf"]}>
             <Document file={pdfURL} onLoadSuccess={onDocumentLoadSuccess}>
                 <Page
                     pageNumber={pageNumber}
@@ -30,6 +35,17 @@ const ReaderPDF = (props: ReaderPDFProps) => {
                     width={400}
                 />
             </Document>
+            <Pagination
+                pageNumber={pageNumber}
+                totalPages={numPages}
+                handlePageChange={setPageNumber}
+                wrapperStyles={{
+                    position: "absolute",
+                    bottom: "8px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                }}
+            />
         </div>
     );
 };
