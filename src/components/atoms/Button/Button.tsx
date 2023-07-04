@@ -19,6 +19,7 @@ interface ButtonProps {
 }
 
 const Button = (props: ButtonProps) => {
+    /** Props */
     const { children, isLoading, buttonProps, fullWidth } = props;
 
     return (
@@ -27,8 +28,9 @@ const Button = (props: ButtonProps) => {
             className={classNames(styles["button"], buttonProps?.className, {
                 [styles["button--full-width"]]: fullWidth,
             })}
+            disabled={isLoading}
         >
-            {children}
+            {isLoading ? <span>Loading...</span> : children}
         </button>
     );
 };

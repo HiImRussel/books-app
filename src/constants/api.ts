@@ -1,0 +1,1 @@
+export const GENERAL_FIELD_NAME = "GENERAL";

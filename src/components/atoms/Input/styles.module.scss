@@ -15,6 +15,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &--error {
+        border: 1px solid $red;
+    }
 }
 
 .input {
@@ -37,4 +41,21 @@
     &::placeholder {
         color: $secondary-font;
     }
+}
+
+.label {
+    font-size: 12px;
+    color: $secondary-font;
+
+    display: block;
+
+    margin-bottom: 4px;
+}
+
+.error-msg {
+    margin-top: 8px;
+    font-size: 12px;
+    color: $red;
+
+    display: block;
 }
