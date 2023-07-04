@@ -1,5 +1,5 @@
 /** React */
-import { memo, useEffect } from "react";
+import { memo } from "react";
 
 /** React router */
 import { RouterProvider } from "react-router-dom";
@@ -8,10 +8,13 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router/main.router";
 
 /** RXJS store */
-import { isFetchingNewToken$, fetchToken } from "./rxjsStore/auth.rxjs-store";
+import { isFetchingNewToken$ } from "./rxjsStore/auth.rxjs-store";
 
 /** Hooks */
 import useObservable from "./hooks/useObservable";
+
+/** Components */
+import LoadingPage from "./pages/LoadingPage/LoadingPage";
 
 const App = () => {
     /** Hooks */
@@ -20,7 +23,7 @@ const App = () => {
     return (
         <>
             {isFetchingNewToken ? (
-                <span>Fetching new token...</span>
+                <LoadingPage />
             ) : (
                 <RouterProvider router={router} />
             )}

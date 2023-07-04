@@ -1,9 +1,9 @@
 export interface User {
-    id: number;
-    email: string;
-    phoneNumber: number;
-    isAdmin: boolean;
-    address: string;
-    city: string;
-    postalCode: string;
+    id: number | null;
+    email: string | null;
+    phoneNumber: number | null;
+    isAdmin: boolean | null;
+    address: string | null;
+    city: string | null;
+    postalCode: string | null;
 }
