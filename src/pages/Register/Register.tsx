@@ -10,7 +10,7 @@ const RegisterPage = () => {
         <AuthTemplate>
             <h1 className={styles["register-page__title"]}>Register</h1>
 
-            <RegisterForm isFromAdminPage />
+            <RegisterForm />
         </AuthTemplate>
     );
 };
