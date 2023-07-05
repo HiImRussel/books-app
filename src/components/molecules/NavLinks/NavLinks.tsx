@@ -7,6 +7,7 @@ import navLinks from "../../../constants/navLinks";
 /** Components */
 import NavLink from "../../atoms/NavLink/NavLink";
 import SearchToggle from "../../atoms/SearchToggle/SearchToggle";
+import LogOutBtn from "../../atoms/LogOutBtn/LogOutBtn";
 
 /** Styles */
 import styles from "./styles.module.scss";
@@ -25,8 +26,12 @@ const NavLinks = () => {
 
     return (
         <div className={styles["nav-links"]}>
-            {links}
-            <SearchToggle />
+            <div>
+                {links}
+                <SearchToggle />
+            </div>
+
+            <LogOutBtn />
         </div>
     );
 };

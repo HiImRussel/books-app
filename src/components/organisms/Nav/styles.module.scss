@@ -13,6 +13,9 @@
 
     background-color: $light_purple;
 
+    display: flex;
+    flex-direction: column;
+
     @media only screen and (max-width: $breakpoint_mobile) {
         position: fixed;
         bottom: 0;

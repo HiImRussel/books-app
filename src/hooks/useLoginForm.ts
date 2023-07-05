@@ -4,6 +4,9 @@ import { FormEvent, useMemo, useState } from "react";
 /** React router */
 import { useNavigate } from "react-router-dom";
 
+/** Constants */
+import { APP_URLS } from "../constants/app";
+
 /** Helpers */
 import getGeneralError from "../helpers/getGeneralError";
 import requestParser from "../helpers/requestParser";
@@ -32,7 +35,7 @@ const useLoginForm = () => {
     /** Handlers */
     const handleLoginSuccess = (data: LoginResponse) => {
         setAuthSession(data.user, data.token, data.expireTime);
-        navigate("/");
+        navigate(APP_URLS.HOME);
     };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

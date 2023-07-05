@@ -85,4 +85,10 @@ const setAuthSession = (user: User, token: string, expireTime: number) => {
 
 fetchToken(true);
 
-export { currentUser$, isFetchingNewToken$, setAuthSession, fetchToken };
+export {
+    currentUser$,
+    isFetchingNewToken$,
+    setAuthSession,
+    fetchToken,
+    destroySession,
+};

@@ -1,0 +1,28 @@
+@import "../../../assets/styles/variables/colors";
+
+.logout-btn {
+    padding: 12px;
+
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $light_blue;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: $hover;
+    }
+
+    svg {
+        fill: $light_blue;
+
+        width: 24px;
+        height: 24px;
+    }
+}
