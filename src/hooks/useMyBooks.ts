@@ -11,6 +11,7 @@ import useObservable from "./useObservable";
 
 /** Types */
 import { BooksApiResponse } from "../types/booksApi.types";
+import { useEffect } from "react";
 
 const useMyBooks = () => {
     /** Hooks */
@@ -25,8 +26,15 @@ const useMyBooks = () => {
         UserLibraryInstance.getUserLibrary,
         { data: [], pagination: { page: 1, pageSize: 1, totalPages: 1 } },
         [page, 20],
-        [page, refreshToken]
+        [page, refreshToken],
+        1
     );
+
+    useEffect(() => {
+        if (data.pagination.totalPages >= page) return;
+
+        setPage(1);
+    }, [data]);
 
     return { isLoading, books: data, setPage, error };
 };
