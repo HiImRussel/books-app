@@ -1,6 +1,4 @@
 /** Styles */
-import AddToLibraryBtn from "../../atoms/AddToLibraryBtn/AddToLibraryBtn";
-import ReadBookBtn from "../../atoms/ReadBookBtn/ReadBookBtn";
 import styles from "./styles.module.scss";
 
 /** Types */
@@ -23,20 +21,6 @@ const SearchResult = (props: SearchResultProps) => {
                     <p className={styles["search-result__description"]}>
                         {book.description}
                     </p>
-                </div>
-                <div className={styles["search-result__buttons"]}>
-                    <AddToLibraryBtn
-                        style={{ position: "static", boxShadow: "none" }}
-                        book={book}
-                    />
-                    <ReadBookBtn
-                        style={{
-                            position: "static",
-                            boxShadow: "none",
-                            marginLeft: "16px",
-                        }}
-                        pdfURL={book.pdf}
-                    />
                 </div>
             </div>
         </div>

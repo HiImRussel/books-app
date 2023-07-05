@@ -17,7 +17,11 @@ const NavLinks = () => {
     const links = useMemo(
         () =>
             navLinks.map((link) => (
-                <NavLink key={link.id} to={link.to}>
+                <NavLink
+                    key={link.id}
+                    to={link.to}
+                    visibleForAdminOnly={link?.visibleForAdminOnly}
+                >
                     {link.Icon({})}
                 </NavLink>
             )),

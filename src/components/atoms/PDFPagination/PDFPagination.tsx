@@ -10,7 +10,7 @@ interface PaginationProps {
     wrapperStyles?: CSSProperties;
 }
 
-const Pagination = (props: PaginationProps) => {
+const PDFPagination = (props: PaginationProps) => {
     /** Props */
     const { pageNumber, totalPages, handlePageChange, wrapperStyles } = props;
 
@@ -50,4 +50,4 @@ const Pagination = (props: PaginationProps) => {
     );
 };
 
-export default Pagination;
+export default PDFPagination;

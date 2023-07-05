@@ -4,19 +4,35 @@ import { NavLink as RouterNavLink } from "react-router-dom";
 /** Class names */
 import classNames from "classnames";
 
+/** Hooks */
+import useObservable from "../../../hooks/useObservable";
+
+/** RXJS Store */
+import { currentUser$ } from "../../../rxjsStore/auth.rxjs-store";
+
 /** Styles */
 import styles from "./styles.module.scss";
 
 /** Types */
-import type { LinkProps } from "react-router-dom";
+import { LinkProps } from "react-router-dom";
 
-const NavLink = (props: LinkProps) => {
+type NavLinkProps = LinkProps & {
+    visibleForAdminOnly?: boolean;
+};
+
+const NavLink = (props: NavLinkProps) => {
     /** Props */
-    const { children } = props;
+    const { children, visibleForAdminOnly } = props;
+    const { to } = props;
+
+    /** Hooks */
+    const user = useObservable(currentUser$);
+
+    if (visibleForAdminOnly && !user?.isAdmin) return null;
 
     return (
         <RouterNavLink
-            {...props}
+            to={to}
             className={({ isActive }) =>
                 classNames(`${styles["nav-link"]}`, {
                     [`${styles["nav-link--active"]}`]: isActive,

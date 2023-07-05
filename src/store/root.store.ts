@@ -2,15 +2,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 /** Slices */
-import { favouritiesSlice } from "./slices/favourities.slice";
 import { pdfModalSlice } from "./slices/pdfModal.slice";
 import { searchModalSlice } from "./slices/searchModal.slice";
+import { bookModalSlice } from "./slices/bookModal.slice";
 
 export const store = configureStore({
     reducer: {
-        favourities: favouritiesSlice.reducer,
         pdfModal: pdfModalSlice.reducer,
         searchModal: searchModalSlice.reducer,
+        bookModal: bookModalSlice.reducer,
     },
 });
 

@@ -1,33 +1,63 @@
+/** Redux */
+import { useState } from "react";
+
+/** Redux */
+import { useDispatch } from "react-redux";
+
+/** Actions */
+import { openBookModal } from "../../../store/slices/bookModal.slice";
+
+/** Services */
+import BookServiceInstance from "../../../services/books.service";
+
+/** Helpers */
+import requestParser from "../../../helpers/requestParser";
+
 /** Components */
-import AddToLibraryBtn from "../../atoms/AddToLibraryBtn/AddToLibraryBtn";
-import ReadBookBtn from "../../atoms/ReadBookBtn/ReadBookBtn";
+import LoadingSpinner from "../../atoms/LoadingSpinner/LoadingSpinner";
 
 /** Styles */
 import styles from "./styles.module.scss";
 
 /** Types */
+import { BooksApiBook } from "../../../types/booksApi.types";
 interface BookBoxProps {
-    book: Book;
+    book: BooksApiBook;
 }
 
 const BookBox = (props: BookBoxProps) => {
     /** Props */
     const { book } = props;
-    const { title, description, img } = book;
+    const { title, description, coverImgURL } = book;
+
+    /** Setup */
+    const [isLoading, setIsLoading] = useState(false);
+
+    /** Dispatch */
+    const dispatch = useDispatch();
+
+    /** Handlers */
+    const handleBookClick = () => {
+        requestParser({
+            promise: BookServiceInstance.getBook(book.id),
+            onSuccess: (data) => dispatch(openBookModal(data.data)),
+            setIsLoading,
+        });
+    };
 
     return (
-        <div className={styles["book-box"]}>
-            <img src={img} className={styles["book-box__image"]} />
-
-            <div className={styles["book-box__btns-wrapper"]}>
-                <AddToLibraryBtn book={book} />
-                <ReadBookBtn pdfURL={book.pdf} style={{ marginLeft: "8px" }} />
-            </div>
+        <div className={styles["book-box"]} onClick={handleBookClick}>
+            <img
+                src={coverImgURL || ""}
+                className={styles["book-box__image"]}
+            />
 
             <div className={styles["book-box__content"]}>
                 <h6 className={styles["book-box__title"]}>{title}</h6>
                 <p className={styles["book-box__description"]}>{description}</p>
             </div>
+
+            {isLoading && <LoadingSpinner />}
         </div>
     );
 };

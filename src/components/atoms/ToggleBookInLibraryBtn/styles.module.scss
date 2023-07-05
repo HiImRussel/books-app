@@ -1,8 +1,10 @@
 @import "../../../assets/styles/variables/colors";
 
 .add-to-library-btn {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
+
+    position: relative;
 
     display: flex;
     align-items: center;
@@ -17,8 +19,8 @@
     cursor: pointer;
 
     svg {
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
 
         fill: white;
     }

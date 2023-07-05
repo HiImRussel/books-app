@@ -3,7 +3,7 @@ import { useState } from "react";
 
 /** React PDF */
 import { Document, Page } from "react-pdf";
-import Pagination from "../../atoms/Pagination/Pagination";
+import PDFPagination from "../../atoms/PDFPagination/PDFPagination";
 
 /** Styles */
 import styles from "./styles.module.scss";
@@ -35,7 +35,7 @@ const ReaderPDF = (props: ReaderPDFProps) => {
                     width={400}
                 />
             </Document>
-            <Pagination
+            <PDFPagination
                 pageNumber={pageNumber}
                 totalPages={numPages}
                 handlePageChange={setPageNumber}

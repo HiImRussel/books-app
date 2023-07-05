@@ -1,5 +1,5 @@
 /** React */
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 /** React router */
 import { RouterProvider } from "react-router-dom";
@@ -18,17 +18,11 @@ import LoadingPage from "./pages/LoadingPage/LoadingPage";
 
 const App = () => {
     /** Hooks */
-    const isFetchingNewToken = useObservable(isFetchingNewToken$, false);
+    const isFetchingNewToken = useObservable(isFetchingNewToken$, true);
 
-    return (
-        <>
-            {isFetchingNewToken ? (
-                <LoadingPage />
-            ) : (
-                <RouterProvider router={router} />
-            )}
-        </>
-    );
+    if (isFetchingNewToken) return <LoadingPage />;
+
+    return <RouterProvider router={router} />;
 };
 
 export default memo(App);

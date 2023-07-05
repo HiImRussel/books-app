@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import MainTemplate from "../../components/templates/Main/MainTemplate";
 import ModalPDF from "../../components/organisms/ModalPDF/ModalPDF";
 import SearchModal from "../../components/organisms/SearchModal/SearchModal";
+import BookModal from "../../components/organisms/BookModal/BookModal";
 
 const MainPage = () => {
     return (
@@ -15,6 +16,7 @@ const MainPage = () => {
 
             <ModalPDF />
             <SearchModal />
+            <BookModal />
         </>
     );
 };

@@ -1,0 +1,43 @@
+@import "../../../assets/styles/variables/colors";
+
+.book-modal {
+    padding: 32px;
+
+    width: 80vw;
+    height: 80vh;
+    overflow-y: auto;
+
+    background-color: $dark_purple;
+
+    border-radius: 4px;
+    border: 1px solid $light_blue;
+
+    &__img {
+        max-width: 320px;
+        width: 100%;
+
+        border-radius: 4px;
+
+        margin-bottom: 16px;
+    }
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $main-font;
+
+        margin-top: 16px;
+    }
+
+    &__author {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $light_blue;
+    }
+
+    &__description {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: $main-font;
+    }
+}
