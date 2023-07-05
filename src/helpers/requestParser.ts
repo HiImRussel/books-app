@@ -1,24 +1,26 @@
 /** Axios */
 import { AxiosResponse } from "axios";
 
-const requestParser = (
-    promise: Promise<AxiosResponse<any, any>>,
-    setIsLoading?: (isLoading: boolean) => void,
-    setData?: (data: any) => void,
-    setErrors?: (errors: any) => void,
-    callBack?: (data: any) => void
-) => {
+const requestParser = (params: {
+    promise: Promise<AxiosResponse<any, any>>;
+    setIsLoading?: (isLoading: boolean) => void;
+    onSuccess?: (data: any) => void;
+    onError?: (errors: any) => void;
+    callBack?: (data: any) => void;
+}) => {
+    const { promise, setIsLoading, onSuccess, onError, callBack } = params;
+
     setIsLoading?.(true);
 
     promise
         .then((response) => {
-            setData?.(response.data);
+            onSuccess?.(response.data);
             callBack?.(response.data);
 
             return response;
         })
         .catch((error) => {
-            setErrors?.(error.response.data.errors);
+            onError?.(error.response.data.errors);
 
             return error;
         })

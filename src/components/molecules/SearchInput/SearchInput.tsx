@@ -10,7 +10,15 @@ import styles from "./styles.module.scss";
 /** Types */
 import { type HTMLProps } from "react";
 
-const SearchInput = (props: HTMLProps<HTMLInputElement>) => {
+interface SearchInputProps {
+    inputProps?: HTMLProps<HTMLInputElement>;
+    onChange: (value: string) => void;
+}
+
+const SearchInput = (props: SearchInputProps) => {
+    /** Props */
+    const { inputProps, onChange } = props;
+
     /** Rendering */
     const searchIcon = (
         <div className={styles["search-input__icon"]}>
@@ -23,8 +31,9 @@ const SearchInput = (props: HTMLProps<HTMLInputElement>) => {
                 inputProps={{
                     placeholder: "Search...",
                     autoFocus: true,
-                    ...props,
+                    ...inputProps,
                 }}
+                onChange={onChange}
                 content={searchIcon}
             />
         </div>

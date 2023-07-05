@@ -10,10 +10,30 @@ interface LoginData {
     password: string;
 }
 
+interface RegisterData {
+    email: string;
+    password: string;
+    phoneNumber: string;
+    address: string;
+    city: string;
+    country: string;
+    postalCode: string;
+    isAdmin?: boolean;
+}
+
 class AuthService extends ApiService {
+    /** Get */
+    public refreshToken = () => this.get(API_ENDPOINTS.auth.refreshToken);
+
+    /** Post */
     public login = (data: LoginData) =>
         this.post(API_ENDPOINTS.auth.login, data);
-    public refreshToken = () => this.get(API_ENDPOINTS.auth.refreshToken);
+
+    public register = (data: RegisterData) =>
+        this.post(API_ENDPOINTS.auth.register, data);
+
+    public registerByAdmin = (data: RegisterData) =>
+        this.post(API_ENDPOINTS.auth.regusterByAdmin, data);
 }
 
 const AuthServiceInstance = new AuthService();

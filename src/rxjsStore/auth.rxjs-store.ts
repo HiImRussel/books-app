@@ -12,6 +12,7 @@ import { User } from "../types/user.types";
 import requestParser from "../helpers/requestParser";
 import AuthServiceInstance from "../services/auth.service";
 
+/** Init */
 const defaultUser = {
     id: null,
     email: null,
@@ -20,12 +21,16 @@ const defaultUser = {
     isAdmin: null,
     phoneNumber: null,
     postalCode: null,
+    country: null,
 };
 
 const sessionRefreshTimeout$ = new BehaviorSubject<NodeJS.Timer | null>(null);
-const currentUser$ = new BehaviorSubject<User>(defaultUser);
+const currentUser$ = new BehaviorSubject<User | typeof defaultUser>(
+    defaultUser
+);
 const isFetchingNewToken$ = new BehaviorSubject(false);
 
+/** Handlers */
 const setToken = (token: string) => {
     localStorage.setItem(JWT_TOKEN_LOCAL_STORAGE_KEY_NAME, token);
 };
@@ -39,10 +44,10 @@ const setFetchingNewToken = (isFetching: boolean) =>
     isFetchingNewToken$.next(isFetching);
 
 const fetchToken = (trackFetchingProgress?: boolean) =>
-    requestParser(
-        AuthServiceInstance.refreshToken(),
-        trackFetchingProgress ? setFetchingNewToken : undefined,
-        (data) => {
+    requestParser({
+        promise: AuthServiceInstance.refreshToken(),
+        setIsLoading: trackFetchingProgress ? setFetchingNewToken : undefined,
+        onSuccess: (data) => {
             if (!data.token || !data.expireTime || !data.user) {
                 destroySession();
 
@@ -53,8 +58,8 @@ const fetchToken = (trackFetchingProgress?: boolean) =>
             setToken(data.token);
             createRefreshTokenInterval(data.expireTime);
         },
-        () => destroySession()
-    );
+        onError: () => destroySession(),
+    });
 
 const createRefreshTokenInterval = (expireTime: number) => {
     const sessionRefreshTimeout = sessionRefreshTimeout$.getValue();

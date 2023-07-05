@@ -26,7 +26,7 @@ const RequireAuth = (props: RequireAuthProps) => {
     const navigation = useNavigate();
 
     /** Hooks */
-    const user = useObservable(currentUser$, "");
+    const user = useObservable(currentUser$);
 
     useEffect(() => {
         if (!user || user.id !== null) return;

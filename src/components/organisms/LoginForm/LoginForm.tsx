@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 /** Hooks */
 import useLoginForm from "../../../hooks/useLoginForm";
 
+/** Constants */
+import { APP_URLS } from "../../../constants/app";
+
 /** Components */
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
@@ -15,13 +18,14 @@ const LoginForm = () => {
     /** Hooks */
     const {
         handleSubmit,
-        handleChangeEmail,
+        setEmail,
         email,
         errors,
-        handleChangePassword,
+        setPassword,
         password,
         generalError,
         isLoading,
+        setErrors,
     } = useLoginForm();
 
     return (
@@ -30,24 +34,26 @@ const LoginForm = () => {
                 inputProps={{
                     type: "text",
                     placeholder: "E-mail",
-                    onChange: handleChangeEmail,
                     value: email,
                 }}
                 boxStyle={{ marginBottom: "16px" }}
                 label="E-mail"
                 errors={errors}
                 fieldName="email"
+                onChange={setEmail}
+                setErrors={setErrors}
             />
             <Input
                 inputProps={{
-                    type: "text",
+                    type: "password",
                     placeholder: "Password",
-                    onChange: handleChangePassword,
                     value: password,
                 }}
                 boxStyle={{ marginBottom: "16px" }}
                 label="Password"
                 errors={errors}
+                onChange={setPassword}
+                setErrors={setErrors}
                 fieldName="password"
             />
 
@@ -66,7 +72,8 @@ const LoginForm = () => {
             </span>
 
             <p className={styles["login-form__register-text"]}>
-                <NavLink to="/register">Register</NavLink> your account for free
+                <NavLink to={APP_URLS.REGISTER}>Register</NavLink> your account
+                for free
             </p>
         </form>
     );

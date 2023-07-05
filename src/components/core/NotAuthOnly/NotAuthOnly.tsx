@@ -26,7 +26,7 @@ const NotAuthOnly = (props: NotAuthOnlyProps) => {
     const navigation = useNavigate();
 
     /** Hooks */
-    const user = useObservable(currentUser$, "");
+    const user = useObservable(currentUser$);
 
     /** Lifecycle */
     useEffect(() => {

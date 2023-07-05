@@ -24,9 +24,7 @@ const SearchBox = () => {
     });
 
     /** Handlers */
-    const handleValueChange = (e: FormEvent<HTMLInputElement>) => {
-        const value = e.currentTarget.value;
-
+    const handleValueChange = (value: string) => {
         setInputValue(value);
         setIsDropdownOpen(value.length > 0);
     };
@@ -34,7 +32,10 @@ const SearchBox = () => {
     return (
         <>
             <div ref={setReferenceElement}>
-                <SearchInput value={inputValue} onChange={handleValueChange} />
+                <SearchInput
+                    inputProps={{ value: inputValue }}
+                    onChange={handleValueChange}
+                />
             </div>
 
             {isDropdownOpen && (

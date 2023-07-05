@@ -1,5 +1,5 @@
 /** React */
-import { useMemo, useRef } from "react";
+import { ChangeEvent, useMemo, useRef } from "react";
 
 /** UUID */
 import { v4 as uuidv4 } from "uuid";
@@ -15,13 +15,15 @@ import { type ReactNode, type HTMLProps, CSSProperties } from "react";
 import { ApiError } from "../../../types/error.types";
 
 interface InputProps {
+    inputProps: HTMLProps<HTMLInputElement>;
+    onChange: (value: string) => void;
+    setErrors?: (errors: ApiError[]) => void;
+    errors?: ApiError[];
+    fieldName?: string;
     content?: ReactNode;
     wrapperStyle?: CSSProperties;
     boxStyle?: CSSProperties;
     label?: string;
-    errors?: ApiError[];
-    fieldName?: string;
-    inputProps: HTMLProps<HTMLInputElement>;
 }
 
 const Input = (props: InputProps) => {
@@ -34,6 +36,8 @@ const Input = (props: InputProps) => {
         fieldName,
         errors,
         boxStyle,
+        onChange,
+        setErrors,
     } = props;
 
     /** Ref */
@@ -44,6 +48,19 @@ const Input = (props: InputProps) => {
         () => errors?.find((e) => e.field === fieldName),
         [errors, fieldName]
     );
+
+    /** Handlers */
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        onChange(e.target.value);
+
+        if (!setErrors || !fieldName || !errors) return;
+
+        const filteredErrors = errors.filter(
+            (error) => error.field !== fieldName
+        );
+
+        setErrors(filteredErrors);
+    };
 
     return (
         <div style={boxStyle}>
@@ -63,6 +80,7 @@ const Input = (props: InputProps) => {
                     className={styles["input"]}
                     {...inputProps}
                     id={id.current}
+                    onChange={handleChange}
                 />
 
                 {content && <div>{content}</div>}
