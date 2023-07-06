@@ -6,6 +6,7 @@ import { pdfModalSlice } from "./slices/pdfModal.slice";
 import { searchModalSlice } from "./slices/searchModal.slice";
 import { bookModalSlice } from "./slices/bookModal.slice";
 import { userEditModalSlice } from "./slices/userEditModal.slice";
+import { editBookModalSlice } from "./slices/editBookModal.slice";
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
         searchModal: searchModalSlice.reducer,
         bookModal: bookModalSlice.reducer,
         userEditModal: userEditModalSlice.reducer,
+        editBookModal: editBookModalSlice.reducer,
     },
 });
 

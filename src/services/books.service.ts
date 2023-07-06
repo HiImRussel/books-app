@@ -23,6 +23,10 @@ class BooksService extends ApiService {
     /** Post */
     addBook = (data: BookData) => this.post("/books/create", data);
 
+    /** Patch */
+    editBook = (id: number, data: BookData) =>
+        this.patch(`/books/update/${id}`, data);
+
     /** Delete */
     deleteBook = (id: number) => this.delete(`/books/delete/${id}`);
 }

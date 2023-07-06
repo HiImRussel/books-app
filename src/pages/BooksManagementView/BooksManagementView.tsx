@@ -6,6 +6,7 @@ import Button from "../../components/atoms/Button/Button";
 import PageTitle from "../../components/atoms/PageTitle/PageTitle";
 import BooksTable from "../../components/organisms/BooksTable/BooksTable";
 import AddBookModal from "../../components/organisms/AddBookModal/AddBookModal";
+import EditBookModal from "../../components/organisms/EditBookModal/EditBookModal";
 
 const BooksManagementView = () => {
     /** Handlers */
@@ -20,6 +21,7 @@ const BooksManagementView = () => {
             <Button buttonProps={{ onClick: handleAddBook }}>Add book</Button>
 
             <AddBookModal />
+            <EditBookModal />
         </div>
     );
 };

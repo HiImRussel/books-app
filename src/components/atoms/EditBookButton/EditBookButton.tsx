@@ -17,20 +17,19 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import requestParser from "../../../helpers/requestParser";
 
 /** Services */
-import UserServiceInstance from "../../../services/user.service";
+import BooksServiceInstance from "../../../services/books.service";
 
 /** RXJS Store */
-import { openUserEditModal } from "../../../store/slices/userEditModal.slice";
+import { openEditBookModal } from "../../../store/slices/editBookModal.slice";
 
 /** Types */
-import { User } from "../../../types/user.types";
 interface EditUserButtonProps {
-    user: User;
+    id: number;
 }
 
-const EditUserButton = (props: EditUserButtonProps) => {
+const EditBookButton = (props: EditUserButtonProps) => {
     /** Props */
-    const { user } = props;
+    const { id } = props;
 
     /** Setup */
     const [isLoading, setIsLoading] = useState(false);
@@ -41,13 +40,13 @@ const EditUserButton = (props: EditUserButtonProps) => {
     /** Hanlders */
     const handleEditClick = () =>
         requestParser({
-            promise: UserServiceInstance.getUser(user.id),
+            promise: BooksServiceInstance.getBook(id),
             setIsLoading,
-            onSuccess: (data) => dispatch(openUserEditModal(data.user)),
+            onSuccess: (data) => dispatch(openEditBookModal(data.data)),
         });
 
     return (
-        <div className={styles["edit-user-button"]} onClick={handleEditClick}>
+        <div className={styles["edit-book-button"]} onClick={handleEditClick}>
             {isLoading ? (
                 <LoadingSpinner
                     wrapperStyle={{
@@ -71,4 +70,4 @@ const EditUserButton = (props: EditUserButtonProps) => {
     );
 };
 
-export default EditUserButton;
+export default EditBookButton;

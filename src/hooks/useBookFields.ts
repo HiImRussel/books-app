@@ -8,7 +8,7 @@ interface UseBookFields {
     title?: string;
     author?: string;
     description?: string;
-    quantity?: number;
+    quantity?: string;
     coverImgURL?: string;
 }
 

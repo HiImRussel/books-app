@@ -1,6 +1,7 @@
 /** Types */
 import useBookFields from "../../../hooks/useBookFields";
 import Input from "../../atoms/Input/Input";
+import TextArea from "../../atoms/TextArea/TextArea";
 
 const BookFormFields = (args: ReturnType<typeof useBookFields>) => {
     /** Args */
@@ -47,18 +48,15 @@ const BookFormFields = (args: ReturnType<typeof useBookFields>) => {
                 setErrors={setErrors}
                 boxStyle={{ marginBottom: "16px" }}
             />
-            <Input
-                inputProps={{
-                    value: description,
-                    placeholder: "Description",
-                    type: "text",
-                }}
-                label="Description"
-                fieldName="description"
+            <TextArea
+                value={description}
                 onChange={setDescription}
                 errors={errors}
                 setErrors={setErrors}
-                boxStyle={{ marginBottom: "16px" }}
+                wrapperStyles={{ marginBottom: "16px" }}
+                label="Description"
+                placeholder="Description"
+                fieldName="description"
             />
             <Input
                 inputProps={{
