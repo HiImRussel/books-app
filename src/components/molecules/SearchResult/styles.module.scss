@@ -12,6 +12,10 @@
 
     border-top: 1px solid $light_blue;
 
+    position: relative;
+
+    cursor: pointer;
+
     &:nth-of-type(1) {
         border-top: 0;
     }

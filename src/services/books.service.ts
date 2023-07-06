@@ -18,6 +18,6 @@ class BooksService extends ApiService {
     getBook = (id: number) => this.get(`/books/book/${id}`);
 }
 
-const BookServiceInstance = new BooksService();
+const BooksServiceInstance = new BooksService();
 
-export default BookServiceInstance;
+export default BooksServiceInstance;

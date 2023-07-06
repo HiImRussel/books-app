@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 /** Services */
-import BookServiceInstance from "../services/books.service";
+import BooksServiceInstance from "../services/books.service";
 
 /** Hooks */
 import usePagination from "./usePagination";
@@ -25,7 +25,7 @@ const useBooks = () => {
         data,
         error,
     }: { isLoading: boolean; data: BooksApiResponse; error: any } = useResource(
-        BookServiceInstance.getBooks,
+        BooksServiceInstance.getBooks,
         DEFAULT_DATA_FOR_USE_RESOURCE,
         [searchTerm, page, 20],
         [searchTerm, page]

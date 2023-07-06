@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { openBookModal } from "../../../store/slices/bookModal.slice";
 
 /** Services */
-import BookServiceInstance from "../../../services/books.service";
+import BooksServiceInstance from "../../../services/books.service";
 
 /** Helpers */
 import requestParser from "../../../helpers/requestParser";
@@ -39,7 +39,7 @@ const BookBox = (props: BookBoxProps) => {
     /** Handlers */
     const handleBookClick = () => {
         requestParser({
-            promise: BookServiceInstance.getBook(book.id),
+            promise: BooksServiceInstance.getBook(book.id),
             onSuccess: (data) => dispatch(openBookModal(data.data)),
             setIsLoading,
         });
