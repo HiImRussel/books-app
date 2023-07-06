@@ -1,4 +1,5 @@
 @import "../../../assets/styles/variables/colors";
+@import "../../../assets/styles/variables/breakpoints";
 
 .pagination-btn {
     padding: 16px;
@@ -30,11 +31,25 @@
         border-color: $pink;
     }
 
+    @media only screen and (max-width: $breakpoint_mobile) {
+        display: none;
+    }
+
     &--active {
         background-color: $pink;
 
         color: white;
 
         border-color: $pink;
+
+        @media only screen and (max-width: $breakpoint_mobile) {
+            display: flex;
+        }
+    }
+
+    &--arrow {
+        @media only screen and (max-width: $breakpoint_mobile) {
+            display: flex;
+        }
     }
 }

@@ -12,6 +12,8 @@
 
     border-bottom: 1px solid $light_blue;
 
+    overflow-wrap: break-word;
+
     &:nth-last-of-type(1) {
         border-bottom: 0;
     }
@@ -20,5 +22,9 @@
         display: flex;
 
         margin-left: 16px;
+    }
+
+    span {
+        word-break: break-all;
     }
 }

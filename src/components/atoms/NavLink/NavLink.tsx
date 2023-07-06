@@ -9,6 +9,7 @@ import useObservable from "../../../hooks/useObservable";
 
 /** RXJS Store */
 import { currentUser$ } from "../../../rxjsStore/auth.rxjs-store";
+import isMobileMenuOpen$ from "../../../rxjsStore/mobileMenu.rxjs-store";
 
 /** Styles */
 import styles from "./styles.module.scss";
@@ -28,6 +29,9 @@ const NavLink = (props: NavLinkProps) => {
     /** Hooks */
     const user = useObservable(currentUser$);
 
+    /** Handlers */
+    const onClick = () => isMobileMenuOpen$.next(false);
+
     if (visibleForAdminOnly && !user?.isAdmin) return null;
 
     return (
@@ -38,6 +42,7 @@ const NavLink = (props: NavLinkProps) => {
                     [`${styles["nav-link--active"]}`]: isActive,
                 })
             }
+            onClick={onClick}
         >
             {children}
         </RouterNavLink>

@@ -19,13 +19,7 @@ const UsersTable = () => {
     const [inputValue, setInputValue] = useState("");
 
     /** Hooks */
-    const {
-        data: users,
-        isLoading,
-        searchTerm,
-        setSearchTerm,
-        setPage,
-    } = useUsersTable();
+    const { data: users, isLoading, setSearchTerm, setPage } = useUsersTable();
 
     /** Handlers */
     const debouncedSetSearchTerm = useCallback(

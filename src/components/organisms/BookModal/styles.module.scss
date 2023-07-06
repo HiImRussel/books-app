@@ -1,4 +1,5 @@
 @import "../../../assets/styles/variables/colors";
+@import "../../../assets/styles/variables/breakpoints";
 
 .book-modal {
     padding: 32px;
@@ -7,10 +8,22 @@
     height: 80vh;
     overflow-y: auto;
 
+    box-sizing: border-box;
+
     background-color: $dark_purple;
 
     border-radius: 4px;
     border: 1px solid $light_blue;
+
+    @media only screen and (max-width: $breakpoint_mobile) {
+        width: 100vw;
+        height: 100vh;
+
+        border: 0;
+        border-radius: 0;
+
+        padding: 16px;
+    }
 
     &__img {
         max-width: 320px;
@@ -27,17 +40,29 @@
         color: $main-font;
 
         margin-top: 16px;
+
+        @media only screen and (max-width: $breakpoint_mobile) {
+            font-size: 1.7rem;
+        }
     }
 
     &__author {
         font-size: 1.5rem;
         font-weight: 700;
         color: $light_blue;
+
+        @media only screen and (max-width: $breakpoint_mobile) {
+            font-size: 1.3rem;
+        }
     }
 
     &__description {
         font-size: 1.2rem;
         font-weight: 400;
         color: $main-font;
+
+        @media only screen and (max-width: $breakpoint_mobile) {
+            font-size: 1rem;
+        }
     }
 }

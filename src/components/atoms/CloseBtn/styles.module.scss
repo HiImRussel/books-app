@@ -15,21 +15,13 @@
 
     cursor: pointer;
 
-    background-color: transparent;
-
-    &:hover {
-        background-color: $secondary-font;
-
-        svg {
-            fill: $light_purple;
-        }
-    }
+    background-color: $secondary-font;
 
     svg {
         width: 32px;
         height: 32px;
 
-        fill: $light_blue;
+        fill: $light_purple;
 
         transition: fill 0.2s ease-in-out;
     }

@@ -17,6 +17,7 @@ interface PaginationBtnProps {
     content?: ReactNode;
     isDecrement?: boolean;
     isIncrement?: boolean;
+    isArrow?: boolean;
 }
 
 const PaginationBtn = (props: PaginationBtnProps) => {
@@ -30,6 +31,7 @@ const PaginationBtn = (props: PaginationBtnProps) => {
         content,
         isDecrement,
         isIncrement,
+        isArrow,
     } = props;
 
     /** Handlers */
@@ -45,6 +47,7 @@ const PaginationBtn = (props: PaginationBtnProps) => {
         <button
             className={classNames(styles["pagination-btn"], {
                 [styles["pagination-btn--active"]]: pageNumber === currentPage,
+                [styles["pagination-btn--arrow"]]: isArrow,
             })}
             onClick={handleClick}
         >

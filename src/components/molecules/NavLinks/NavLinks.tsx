@@ -11,8 +11,17 @@ import LogOutBtn from "../../atoms/LogOutBtn/LogOutBtn";
 
 /** Styles */
 import styles from "./styles.module.scss";
+import classNames from "classnames";
 
-const NavLinks = () => {
+/** Types */
+interface NavLinksProps {
+    isMobile?: boolean;
+}
+
+const NavLinks = (props: NavLinksProps) => {
+    /** Props */
+    const { isMobile } = props;
+
     /** Data */
     const links = useMemo(
         () =>
@@ -29,7 +38,11 @@ const NavLinks = () => {
     );
 
     return (
-        <div className={styles["nav-links"]}>
+        <div
+            className={classNames(styles["nav-links"], {
+                [styles["nav-links--mobile"]]: isMobile,
+            })}
+        >
             <div>
                 {links}
                 <SearchToggle />

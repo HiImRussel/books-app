@@ -1,4 +1,5 @@
 /** Components */
+import MobileNavLinksTrigger from "../../atoms/MobileNavLinksTrigger/MobileNavLinksTrigger";
 import UserProfile from "../../atoms/UserProfile/UserProfile";
 import NavLinks from "../../molecules/NavLinks/NavLinks";
 
@@ -10,6 +11,7 @@ const Nav = () => {
         <div className={styles["nav"]}>
             <UserProfile />
             <NavLinks />
+            <MobileNavLinksTrigger />
         </div>
     );
 };

@@ -18,7 +18,14 @@ const BooksManagementView = () => {
 
             <BooksTable />
 
-            <Button buttonProps={{ onClick: handleAddBook }}>Add book</Button>
+            <Button
+                buttonProps={{
+                    onClick: handleAddBook,
+                    style: { marginTop: "16px" },
+                }}
+            >
+                Add book
+            </Button>
 
             <AddBookModal />
             <EditBookModal />

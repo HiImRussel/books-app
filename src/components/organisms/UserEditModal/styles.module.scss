@@ -1,4 +1,5 @@
 @import "../../../assets/styles/variables/colors";
+@import "../../../assets/styles/variables/breakpoints";
 
 .edit-user-modal {
     width: 512px;
@@ -11,4 +12,16 @@
 
     border-radius: 4px;
     border: 1px solid $light_blue;
+
+    @media only screen and (max-width: $breakpoint_mobile) {
+        width: 100vw;
+        height: 100vh;
+        max-height: none;
+
+        border: 0;
+        border-radius: 0;
+
+        padding: 16px;
+        padding-top: 80px;
+    }
 }

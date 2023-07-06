@@ -1,5 +1,5 @@
 /** React */
-import { memo, useEffect } from "react";
+import { memo } from "react";
 
 /** React router */
 import { RouterProvider } from "react-router-dom";

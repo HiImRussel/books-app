@@ -23,6 +23,7 @@ const closeBtnStyle: CSSProperties = {
     position: "absolute",
     top: "16px",
     right: "16px",
+    zIndex: 999,
 };
 
 const Modal = (props: ModalProps) => {

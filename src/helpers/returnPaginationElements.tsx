@@ -33,6 +33,7 @@ const returnPaginationElements = (
                     />
                 }
                 isDecrement
+                isArrow
             />
         );
     }
@@ -137,6 +138,7 @@ const returnPaginationElements = (
                     />
                 }
                 isIncrement
+                isArrow
             />
         );
     }

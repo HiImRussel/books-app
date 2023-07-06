@@ -1,7 +1,10 @@
 @import "../../../assets/styles/variables/colors";
+@import "../../../assets/styles/variables/breakpoints";
 
 .search-toggle {
     padding: 12px;
+
+    margin-bottom: 34px;
 
     border-radius: 100%;
 
@@ -24,5 +27,10 @@
 
         width: 24px;
         height: 24px;
+    }
+
+    @media only screen and (max-width: $breakpoint_md) {
+        margin: 0;
+        margin-top: 16px;
     }
 }
