@@ -23,11 +23,12 @@ import styles from "./styles.module.scss";
 import { BooksApiBook } from "../../../types/booksApi.types";
 interface BookBoxProps {
     book: BooksApiBook;
+    disableClick?: boolean;
 }
 
 const BookBox = (props: BookBoxProps) => {
     /** Props */
-    const { book } = props;
+    const { book, disableClick } = props;
     const { title, description, coverImgURL } = book;
 
     /** Setup */
@@ -38,6 +39,8 @@ const BookBox = (props: BookBoxProps) => {
 
     /** Handlers */
     const handleBookClick = () => {
+        if (disableClick) return;
+
         requestParser({
             promise: BooksServiceInstance.getBook(book.id),
             onSuccess: (data) => dispatch(openBookModal(data.data)),

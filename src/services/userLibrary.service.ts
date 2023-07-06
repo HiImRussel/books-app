@@ -14,6 +14,14 @@ class UserLibrary extends ApiService {
             })
         );
 
+    getUserLibraryHistory = (page?: number, pageSize?: number) =>
+        this.get(
+            bindQueryParams("/userLibrary/history", {
+                page,
+                pageSize,
+            })
+        );
+
     /** Post */
     updateBookInLibrary = (bookId: number) =>
         this.post(`/userLibrary/update`, { bookId });

@@ -18,6 +18,7 @@ interface BooksListProps {
     includePagination?: boolean;
     paginationData?: PaginationApi;
     setPage?: (page: number) => void;
+    disableClick?: boolean;
 }
 
 const BooksList = (props: BooksListProps) => {
@@ -29,6 +30,7 @@ const BooksList = (props: BooksListProps) => {
         includePagination,
         paginationData,
         setPage,
+        disableClick,
     } = props;
 
     /** Data */
@@ -36,7 +38,13 @@ const BooksList = (props: BooksListProps) => {
         () =>
             isLoading || !books
                 ? []
-                : books.map((book) => <BookBox key={book.id} book={book} />),
+                : books.map((book) => (
+                      <BookBox
+                          key={book.id}
+                          book={book}
+                          disableClick={disableClick}
+                      />
+                  )),
         [books]
     );
 
