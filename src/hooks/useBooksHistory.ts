@@ -17,7 +17,7 @@ const useBooksHistory = () => {
     const { isLoading, data } = useResource<HistoryResponse>(
         BooksServiceInstance.getBooksHistory,
         DEFAULT_DATA_FOR_USE_RESOURCE,
-        [searchTerm, page],
+        [searchTerm, page, 5],
         [searchTerm, page, refreshTrigger],
         1
     );

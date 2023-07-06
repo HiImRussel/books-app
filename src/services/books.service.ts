@@ -21,7 +21,13 @@ class BooksService extends ApiService {
     getBook = (id: number) => this.get(`/books/book/${id}`);
 
     getBooksHistory = (searchTerm?: string, page?: number, pageSize?: number) =>
-        this.get("/books/history");
+        this.get(
+            bindQueryParams("/books/history", {
+                searchTerm: searchTerm?.length === 0 ? undefined : searchTerm,
+                page,
+                pageSize,
+            })
+        );
 
     /** Post */
     addBook = (data: BookData) => this.post("/books/create", data);
