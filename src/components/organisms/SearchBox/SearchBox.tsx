@@ -7,18 +7,12 @@ import { usePopper } from "react-popper";
 /** Debounce */
 import debounce from "lodash.debounce";
 
-/** Services */
-import BooksServiceInstance from "../../../services/books.service";
-
-/** Hooks */
-import useResource from "../../../hooks/useResource";
-
 /** Components */
 import SearchInput from "../../molecules/SearchInput/SearchInput";
 import SearchResults from "../../molecules/SearchResults/SearchResults";
 
 /** Types */
-import { BooksApiResponse } from "../../../types/booksApi.types";
+import useBooks from "../../../hooks/useBooks";
 
 const SearchBox = () => {
     /** Setup */
@@ -26,27 +20,20 @@ const SearchBox = () => {
     const [popperElement, setPopperElement] = useState<HTMLElement | null>();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [inputValue, setInputValue] = useState("");
-    const [searchTerm, setSearchTerm] = useState("");
 
     /** Hooks */
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
         placement: "bottom",
     });
-    const { isLoading, data: books } = useResource<BooksApiResponse>(
-        BooksServiceInstance.getBooks,
-        { data: [] },
-        [searchTerm],
-        [searchTerm],
-        1
-    );
+    const { isLoading, books, setSearchTerm } = useBooks();
 
     /** Handlers */
     const debouneSearchTerm = useCallback(debounce(setSearchTerm, 500), []);
 
     const handleValueChange = (value: string) => {
         setInputValue(value);
-        debouneSearchTerm(value);
         setIsDropdownOpen(value.length > 0);
+        debouneSearchTerm(value);
     };
 
     return (

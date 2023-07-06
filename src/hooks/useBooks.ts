@@ -6,7 +6,11 @@ import BooksServiceInstance from "../services/books.service";
 
 /** Hooks */
 import usePagination from "./usePagination";
+import useObservable from "./useObservable";
 import useResource from "./useResource";
+
+/** RXJS Store */
+import { booksRefreshTrigger$ } from "../rxjsStore/booksRefresh.rxjs-store";
 
 /** Constants */
 import { DEFAULT_DATA_FOR_USE_RESOURCE } from "../constants/api";
@@ -14,21 +18,19 @@ import { DEFAULT_DATA_FOR_USE_RESOURCE } from "../constants/api";
 /** Types */
 import { BooksApiResponse } from "../types/booksApi.types";
 
-const useBooks = () => {
+const useBooks = (perPage = 20) => {
     /** Setup */
     const [searchTerm, setSearchTerm] = useState("");
 
     /** Hooks */
     const { page, setPage } = usePagination();
-    const {
-        isLoading,
-        data,
-        error,
-    }: { isLoading: boolean; data: BooksApiResponse; error: any } = useResource(
+    const refreshBooksTrigger = useObservable(booksRefreshTrigger$);
+    const { isLoading, data, error } = useResource<BooksApiResponse>(
         BooksServiceInstance.getBooks,
         DEFAULT_DATA_FOR_USE_RESOURCE,
-        [searchTerm, page, 20],
-        [searchTerm, page]
+        [searchTerm, page, perPage],
+        [searchTerm, page, refreshBooksTrigger],
+        1
     );
 
     /** Lifecycle */

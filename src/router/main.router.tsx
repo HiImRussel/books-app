@@ -15,6 +15,7 @@ import NotAuthOnly from "../components/core/NotAuthOnly/NotAuthOnly";
 import RegisterPage from "../pages/Register/Register";
 import UsersManagementView from "../pages/UsersManagementView/UsersManagementView";
 import AdminOnly from "../components/core/AdminOnly/AdminOnly";
+import BooksManagementView from "../pages/BooksManagementView/BooksManagementView";
 
 const router = createBrowserRouter([
     { path: "*", element: <Page404 /> },
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
                 element: (
                     <AdminOnly>
                         <UsersManagementView />
+                    </AdminOnly>
+                ),
+            },
+            {
+                path: APP_URLS.BOOKS_MANAGEMENT,
+                element: (
+                    <AdminOnly>
+                        <BooksManagementView />
                     </AdminOnly>
                 ),
             },

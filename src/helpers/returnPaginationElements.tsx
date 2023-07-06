@@ -47,7 +47,8 @@ const returnPaginationElements = (
                 content={1}
             />
         );
-
+    }
+    if (paginationData.page > 3) {
         paginationBtns.push(
             <PaginationBtn
                 key={uuidv4()}
@@ -94,7 +95,7 @@ const returnPaginationElements = (
         );
     }
 
-    if (paginationData.totalPages - paginationData.page > 1) {
+    if (paginationData.totalPages - paginationData.page > 2) {
         paginationBtns.push(
             <PaginationBtn
                 key={uuidv4()}
@@ -104,7 +105,9 @@ const returnPaginationElements = (
                 placeHolderMode
             />
         );
+    }
 
+    if (paginationData.totalPages - paginationData.page > 1) {
         paginationBtns.push(
             <PaginationBtn
                 key={uuidv4()}
