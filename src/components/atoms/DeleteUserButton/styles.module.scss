@@ -1,0 +1,27 @@
+@import "../../../assets/styles/variables/colors";
+
+.delete-user-button {
+    position: relative;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 100%;
+
+    background-color: $pink;
+
+    cursor: pointer;
+
+    margin-left: 16px;
+
+    svg {
+        width: 16px;
+        height: 16px;
+
+        fill: white;
+    }
+}

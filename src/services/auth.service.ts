@@ -16,7 +16,6 @@ interface RegisterData {
     phoneNumber: string;
     address: string;
     city: string;
-    country: string;
     postalCode: string;
     isAdmin?: boolean;
 }

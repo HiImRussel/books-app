@@ -83,7 +83,9 @@ const setAuthSession = (user: User, token: string, expireTime: number) => {
     createRefreshTokenInterval(expireTime);
 };
 
-fetchToken(true);
+if (localStorage.getItem(JWT_TOKEN_LOCAL_STORAGE_KEY_NAME)) {
+    fetchToken(true);
+}
 
 export {
     currentUser$,

@@ -13,6 +13,8 @@ import LoginPage from "../pages/Login/Login";
 import RequireAuth from "../components/core/RequireAuth/RequireAuth";
 import NotAuthOnly from "../components/core/NotAuthOnly/NotAuthOnly";
 import RegisterPage from "../pages/Register/Register";
+import UsersManagementView from "../pages/UsersManagementView/UsersManagementView";
+import AdminOnly from "../components/core/AdminOnly/AdminOnly";
 
 const router = createBrowserRouter([
     { path: "*", element: <Page404 /> },
@@ -24,8 +26,16 @@ const router = createBrowserRouter([
             </RequireAuth>
         ),
         children: [
-            { path: "", element: <HomeView /> },
-            { path: "library", element: <LibraryView /> },
+            { path: APP_URLS.HOME, element: <HomeView /> },
+            { path: APP_URLS.LIBRARY, element: <LibraryView /> },
+            {
+                path: APP_URLS.USERS_MANAGEMENT,
+                element: (
+                    <AdminOnly>
+                        <UsersManagementView />
+                    </AdminOnly>
+                ),
+            },
         ],
     },
     {

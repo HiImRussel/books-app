@@ -9,6 +9,9 @@ import usePagination from "./usePagination";
 import useResource from "./useResource";
 import useObservable from "./useObservable";
 
+/** Constants */
+import { DEFAULT_DATA_FOR_USE_RESOURCE } from "../constants/api";
+
 /** Types */
 import { BooksApiResponse } from "../types/booksApi.types";
 import { useEffect } from "react";
@@ -17,19 +20,15 @@ const useMyBooks = () => {
     /** Hooks */
     const { page, setPage } = usePagination();
     const refreshToken = useObservable(booksRefreshTrigger$);
-
-    const {
-        isLoading,
-        data,
-        error,
-    }: { isLoading: boolean; data: BooksApiResponse; error: any } = useResource(
+    const { isLoading, data, error } = useResource<BooksApiResponse>(
         UserLibraryInstance.getUserLibrary,
-        { data: [], pagination: { page: 1, pageSize: 1, totalPages: 1 } },
+        DEFAULT_DATA_FOR_USE_RESOURCE,
         [page, 20],
         [page, refreshToken],
         1
     );
 
+    /** Lifecycle */
     useEffect(() => {
         if (data.pagination.totalPages >= page) return;
 

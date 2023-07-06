@@ -7,7 +7,7 @@ import requestParser from "../helpers/requestParser";
 /** Axios */
 import { AxiosResponse } from "axios";
 
-const useResource = (
+const useResource = <T>(
     promiseFunction: (...args: any) => Promise<AxiosResponse<any, any>>,
     initValue: any,
     requestData: any[],
@@ -41,7 +41,7 @@ const useResource = (
         });
     }, [...deps]);
 
-    return { isLoading, data, error };
+    return { isLoading, data: data as T, error };
 };
 
 export default useResource;

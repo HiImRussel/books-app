@@ -1,0 +1,30 @@
+@import "../../../assets/styles/variables/colors";
+
+.users-table {
+    position: relative;
+
+    width: 100%;
+    min-height: 96px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 4px;
+    border: 1px solid $light_blue;
+    background-color: $light_purple;
+
+    box-sizing: border-box;
+
+    padding: 0 16px;
+
+    margin-bottom: 16px;
+
+    &__no-results {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        flex-grow: 1;
+    }
+}

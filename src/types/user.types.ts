@@ -1,10 +1,12 @@
-export interface User {
-    id: number;
-    email: string;
+export interface UserAdditionalData {
     phoneNumber: string;
-    isAdmin: boolean;
     address: string;
     city: string;
-    country: string;
     postalCode: string;
+    isAdmin: boolean;
+}
+
+export interface User extends UserAdditionalData {
+    id: number;
+    email: string;
 }

@@ -1,0 +1,24 @@
+@import "../../../assets/styles/variables/colors";
+
+.users-table-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 32px 8px;
+
+    border-bottom: 1px solid $light_blue;
+
+    &:nth-last-of-type(1) {
+        border-bottom: 0;
+    }
+
+    &__actions {
+        display: flex;
+
+        margin-left: 16px;
+    }
+}

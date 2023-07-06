@@ -1,16 +1,24 @@
+/** React */
+import { FormEvent } from "react";
+
 /** React router */
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 /** Hooks */
-import useRegisterForm from "../../../hooks/useRegisterForm";
+import useUserForm from "../../../hooks/useUserForm";
 
 /** Constants */
 import { APP_URLS } from "../../../constants/app";
 
+/** Services */
+import AuthServiceInstance from "../../../services/auth.service";
+
+/** Helpers */
+import requestParser from "../../../helpers/requestParser";
+
 /** Components */
-import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
-import Checkbox from "../../atoms/Checkbox/Checkbox";
+import UserFormFields from "../../molecules/UserFormFields/UserFormFields";
 
 /** Styles */
 import styles from "./styles.module.scss";
@@ -25,114 +33,35 @@ const RegisterForm = (props: RegisterFormProps) => {
     const { isFromAdminPage } = props;
 
     /** Hooks */
-    const {
-        handleSubmit,
-        email,
-        setEmail,
-        errors,
-        setErrors,
-        password,
-        setPassword,
-        phoneNumber,
-        setPhoneNumber,
-        address,
-        setAddress,
-        postalCode,
-        setPostalCode,
-        isAdminChecked,
-        setIsAdminChecked,
-        country,
-        setCountry,
-        city,
-        setCity,
-    } = useRegisterForm(isFromAdminPage);
+    const registerFormData = useUserForm({});
+
+    /** Router */
+    const navigate = useNavigate();
+
+    /** Handlers */
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const data = {
+            email: registerFormData.email,
+            password: registerFormData.password,
+            phoneNumber: registerFormData.phoneNumber,
+            address: registerFormData.address,
+            city: registerFormData.city,
+            postalCode: registerFormData.postalCode,
+            country: registerFormData.country,
+        };
+
+        requestParser({
+            promise: AuthServiceInstance.register(data),
+            onSuccess: () => navigate(APP_URLS.LOGIN),
+            onError: registerFormData.setErrors,
+        });
+    };
 
     return (
         <form onSubmit={handleSubmit}>
-            <Input
-                inputProps={{
-                    value: email,
-                    placeholder: "Email",
-                    type: "email",
-                }}
-                onChange={setEmail}
-                setErrors={setErrors}
-                label="Email"
-                fieldName="email"
-                errors={errors}
-                boxStyle={{ marginBottom: "16px" }}
-            />
-            <Input
-                inputProps={{
-                    value: password,
-                    placeholder: "Password",
-                    type: "password",
-                }}
-                onChange={setPassword}
-                setErrors={setErrors}
-                label="Password"
-                fieldName="password"
-                errors={errors}
-                boxStyle={{ marginBottom: "16px" }}
-            />
-            <Input
-                inputProps={{
-                    value: phoneNumber,
-                    placeholder: "Phone number",
-                    type: "number",
-                }}
-                onChange={setPhoneNumber}
-                setErrors={setErrors}
-                label="Phone number"
-                fieldName="phoneNumber"
-                errors={errors}
-                boxStyle={{ marginBottom: "16px" }}
-            />
-            <Input
-                inputProps={{ value: address, placeholder: "Address" }}
-                onChange={setAddress}
-                setErrors={setErrors}
-                label="Address"
-                fieldName="address"
-                errors={errors}
-                boxStyle={{ marginBottom: "16px" }}
-            />
-            <Input
-                inputProps={{ value: city, placeholder: "City" }}
-                onChange={setCity}
-                setErrors={setErrors}
-                label="City"
-                fieldName="city"
-                errors={errors}
-                boxStyle={{ marginBottom: "16px" }}
-            />
-            <Input
-                inputProps={{ value: country, placeholder: "Country" }}
-                onChange={setCountry}
-                setErrors={setErrors}
-                label="Country"
-                fieldName="country"
-                errors={errors}
-                boxStyle={{ marginBottom: "16px" }}
-            />
-            <Input
-                inputProps={{ value: postalCode, placeholder: "Postal code" }}
-                onChange={setPostalCode}
-                setErrors={setErrors}
-                label="Postal code"
-                fieldName="postalCode"
-                errors={errors}
-                boxStyle={{ marginBottom: "32px" }}
-            />
-
-            {isFromAdminPage && (
-                <Checkbox
-                    isChecked={isAdminChecked}
-                    onChange={setIsAdminChecked}
-                    label="Is user an administrator"
-                    wrapperStyle={{ marginBottom: "32px" }}
-                />
-            )}
+            <UserFormFields {...registerFormData} />
 
             <Button fullWidth>
                 {" "}
