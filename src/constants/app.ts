@@ -5,4 +5,5 @@ export const APP_URLS = {
     LIBRARY: "/library",
     USERS_MANAGEMENT: "/users-management",
     BOOKS_MANAGEMENT: "/books-management",
+    BOOKS_HISTORY: "/books-history",
 };

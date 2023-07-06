@@ -16,6 +16,7 @@ import RegisterPage from "../pages/Register/Register";
 import UsersManagementView from "../pages/UsersManagementView/UsersManagementView";
 import AdminOnly from "../components/core/AdminOnly/AdminOnly";
 import BooksManagementView from "../pages/BooksManagementView/BooksManagementView";
+import BooksHistoryView from "../pages/BooksHistoryView/BooksHistoryView";
 
 const router = createBrowserRouter([
     { path: "*", element: <Page404 /> },
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
                 element: (
                     <AdminOnly>
                         <BooksManagementView />
+                    </AdminOnly>
+                ),
+            },
+            {
+                path: APP_URLS.BOOKS_HISTORY,
+                element: (
+                    <AdminOnly>
+                        <BooksHistoryView />
                     </AdminOnly>
                 ),
             },

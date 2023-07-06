@@ -20,6 +20,9 @@ class BooksService extends ApiService {
 
     getBook = (id: number) => this.get(`/books/book/${id}`);
 
+    getBooksHistory = (searchTerm?: string, page?: number, pageSize?: number) =>
+        this.get("/books/history");
+
     /** Post */
     addBook = (data: BookData) => this.post("/books/create", data);
 

@@ -12,6 +12,10 @@
 
     padding: 32px 8px;
 
+    &:nth-last-of-type(1) {
+        border-bottom: 0;
+    }
+
     &__actions {
         display: flex;
 

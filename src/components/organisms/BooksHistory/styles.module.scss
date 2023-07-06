@@ -1,0 +1,47 @@
+@import "../../../assets/styles/variables/colors";
+
+.books-history {
+    position: relative;
+
+    width: 100%;
+    min-height: 80px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 4px;
+    border: 1px solid $light_blue;
+    background-color: $light_purple;
+
+    box-sizing: border-box;
+
+    padding: 0 16px;
+
+    margin-bottom: 16px;
+
+    &__entry {
+        width: 100%;
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        border-bottom: 1px solid $light_blue;
+
+        padding: 32px 8px;
+
+        &:nth-last-of-type(1) {
+            border-bottom: 0;
+        }
+    }
+
+    &__no-results {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        flex-grow: 1;
+    }
+}
