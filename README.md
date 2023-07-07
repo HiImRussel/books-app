@@ -6,14 +6,14 @@
 
 # Instalation
 
-Go to root directory and run following commands:
+Go to the root directory and run the following commands:
 
 1. npm i
 2. npm run dev (to start development server)
 
 # Setup
 
-Go to file ".env" located in root directrory. Modify API root URL if you need.
+Go to file ".env" located in the root directory. Modify the API root URL if you need.
 
 # To Do
 
