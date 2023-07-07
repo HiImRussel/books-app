@@ -33,6 +33,10 @@ class AuthService extends ApiService {
 
     public registerByAdmin = (data: RegisterData) =>
         this.post(API_ENDPOINTS.auth.regusterByAdmin, data);
+
+    /** Patch */
+    public changePassword = (newPassword: string) =>
+        this.patch(API_ENDPOINTS.auth.changePassword, { newPassword });
 }
 
 const AuthServiceInstance = new AuthService();

@@ -1,0 +1,9 @@
+.user-profile-view {
+    &__edit-form {
+        max-width: 512px;
+
+        &--password {
+            margin-top: 32px;
+        }
+    }
+}

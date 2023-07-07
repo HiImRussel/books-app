@@ -4,6 +4,7 @@ const API_ENDPOINTS = {
         refreshToken: "/auth/refreshToken",
         register: "/auth/register",
         regusterByAdmin: "/auth/registerByAdmin",
+        changePassword: "/auth/changePassword",
     },
 };
 

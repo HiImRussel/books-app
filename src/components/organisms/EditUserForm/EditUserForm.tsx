@@ -21,11 +21,12 @@ import Button from "../../atoms/Button/Button";
 import { User } from "../../../types/user.types";
 interface EditUserFormProps {
     user: User;
+    isFromAdminPage?: boolean;
 }
 
 const EditUserForm = (props: EditUserFormProps) => {
     /** Props */
-    const { user } = props;
+    const { user, isFromAdminPage = true } = props;
 
     /** Setup */
     const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +58,7 @@ const EditUserForm = (props: EditUserFormProps) => {
         <form onSubmit={handleSubmit}>
             <UserFormFields
                 {...userFormData}
-                isFromAdminPage
+                isFromAdminPage={isFromAdminPage}
                 hidePassword
                 hideEmail
             />

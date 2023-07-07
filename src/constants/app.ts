@@ -1,5 +1,6 @@
 export const APP_URLS = {
     HOME: "/",
+    USER_PROFILE: "/user-profile",
     LOGIN: "/login",
     REGISTER: "/register",
     LIBRARY: "/library",

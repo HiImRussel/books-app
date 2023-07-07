@@ -17,6 +17,7 @@ import UsersManagementView from "../pages/UsersManagementView/UsersManagementVie
 import AdminOnly from "../components/core/AdminOnly/AdminOnly";
 import BooksManagementView from "../pages/BooksManagementView/BooksManagementView";
 import BooksHistoryView from "../pages/BooksHistoryView/BooksHistoryView";
+import UserProfileView from "../pages/UserProfileView/UserProfileView";
 
 const router = createBrowserRouter([
     { path: "*", element: <Page404 /> },
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         ),
         children: [
             { path: APP_URLS.HOME, element: <HomeView /> },
+            { path: APP_URLS.USER_PROFILE, element: <UserProfileView /> },
             { path: APP_URLS.LIBRARY, element: <LibraryView /> },
             {
                 path: APP_URLS.USERS_MANAGEMENT,
