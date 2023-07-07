@@ -1,6 +1,9 @@
 /** URLs */
 import API_ENDPOINTS from "../urls";
 
+/** RXJS Store */
+import { pushAlert } from "../rxjsStore/alerts.rxjs-store";
+
 /** Services */
 import ApiService from "./api.service";
 
@@ -26,17 +29,57 @@ class AuthService extends ApiService {
 
     /** Post */
     public login = (data: LoginData) =>
-        this.post(API_ENDPOINTS.auth.login, data);
+        this.post(API_ENDPOINTS.auth.login, data)
+            .then((res) => {
+                pushAlert("Logged in successfully", "success");
+
+                return res;
+            })
+            .catch((err) => {
+                pushAlert("Error while logging in", "error");
+
+                throw err;
+            });
 
     public register = (data: RegisterData) =>
-        this.post(API_ENDPOINTS.auth.register, data);
+        this.post(API_ENDPOINTS.auth.register, data)
+            .then((res) => {
+                pushAlert("Registered successfully", "success");
+
+                return res;
+            })
+            .catch((err) => {
+                pushAlert("Error while registering", "error");
+
+                throw err;
+            });
 
     public registerByAdmin = (data: RegisterData) =>
-        this.post(API_ENDPOINTS.auth.regusterByAdmin, data);
+        this.post(API_ENDPOINTS.auth.regusterByAdmin, data)
+            .then((res) => {
+                pushAlert("Registered successfully", "success");
+
+                return res;
+            })
+            .catch((err) => {
+                pushAlert("Error while registering", "error");
+
+                throw err;
+            });
 
     /** Patch */
     public changePassword = (newPassword: string) =>
-        this.patch(API_ENDPOINTS.auth.changePassword, { newPassword });
+        this.patch(API_ENDPOINTS.auth.changePassword, { newPassword })
+            .then((res) => {
+                pushAlert("Password changed successfully", "success");
+
+                return res;
+            })
+            .catch((err) => {
+                pushAlert("Error while changing password", "error");
+
+                throw err;
+            });
 }
 
 const AuthServiceInstance = new AuthService();

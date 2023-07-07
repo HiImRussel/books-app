@@ -1,4 +1,7 @@
 /** Constants */
+import { DEFAULT_PAGINATION } from "../../../constants/api";
+
+/** Hooks */
 import useBooks from "../../../hooks/useBooks";
 
 /** Components */
@@ -11,9 +14,9 @@ const AllBooks = () => {
     return (
         <BooksList
             title="All books"
-            books={books.data}
+            books={books?.data}
             isLoading={isLoading}
-            paginationData={books.pagination}
+            paginationData={books?.pagination || DEFAULT_PAGINATION}
             setPage={setPage}
             includePagination
         />

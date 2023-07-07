@@ -35,7 +35,7 @@ const useBooks = (perPage = 20) => {
 
     /** Lifecycle */
     useEffect(() => {
-        if (data.pagination.totalPages >= page) return;
+        if (data?.pagination?.totalPages >= page) return;
 
         setPage(1);
     }, [data]);

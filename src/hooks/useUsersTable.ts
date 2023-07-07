@@ -39,7 +39,7 @@ const useUsersTable = () => {
 
     /** Lifecycle */
     useEffect(() => {
-        if (data.pagination.totalPages >= page) return;
+        if (data?.pagination?.totalPages >= page) return;
 
         setPage(1);
     }, [data]);

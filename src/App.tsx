@@ -1,6 +1,3 @@
-/** React */
-import { memo } from "react";
-
 /** React router */
 import { RouterProvider } from "react-router-dom";
 
@@ -15,6 +12,7 @@ import useObservable from "./hooks/useObservable";
 
 /** Components */
 import LoadingPage from "./pages/LoadingPage/LoadingPage";
+import Alerts from "./components/molecules/Alerts/Alerts";
 
 const App = () => {
     /** Hooks */
@@ -22,7 +20,12 @@ const App = () => {
 
     if (isFetchingNewToken) return <LoadingPage />;
 
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <RouterProvider router={router} />
+            <Alerts />
+        </>
+    );
 };
 
-export default memo(App);
+export default App;

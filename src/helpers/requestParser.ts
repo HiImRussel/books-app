@@ -20,7 +20,9 @@ const requestParser = (params: {
             return response;
         })
         .catch((error) => {
-            onError?.(error.response.data?.errors);
+            const errors = error.response.data?.errors || error?.errors;
+
+            onError?.(errors);
 
             return error;
         })

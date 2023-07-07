@@ -8,3 +8,5 @@ export const APP_URLS = {
     BOOKS_MANAGEMENT: "/books-management",
     BOOKS_HISTORY: "/books-history",
 };
+
+export const ALERTS_HIDE_TIME_MS = 5000;

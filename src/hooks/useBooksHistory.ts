@@ -1,10 +1,21 @@
-import { useState } from "react";
+/** React */
+import { useEffect, useState } from "react";
+
+/** Hooks */
 import usePagination from "./usePagination";
 import useResource from "./useResource";
-import BooksServiceInstance from "../services/books.service";
-import { DEFAULT_DATA_FOR_USE_RESOURCE } from "../constants/api";
 import useObservable from "./useObservable";
+
+/** Services */
+import BooksServiceInstance from "../services/books.service";
+
+/** Constants */
+import { DEFAULT_DATA_FOR_USE_RESOURCE } from "../constants/api";
+
+/** RXJS Store */
 import { booksRefreshTrigger$ } from "../rxjsStore/booksRefresh.rxjs-store";
+
+/** Types */
 import { HistoryResponse } from "../types/history.types";
 
 const useBooksHistory = () => {
@@ -21,6 +32,17 @@ const useBooksHistory = () => {
         [searchTerm, page, refreshTrigger],
         1
     );
+
+    /** Lifecycle */
+    useEffect(() => {
+        if (data?.pagination?.totalPages >= page) return;
+
+        setPage(1);
+    }, [data]);
+
+    useEffect(() => {
+        setPage(1);
+    }, [searchTerm]);
 
     return {
         isLoading,
