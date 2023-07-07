@@ -33,7 +33,7 @@ const DeleteBookButton = (props: DeleteBookButtonProps) => {
     const [isLoading, setIsLoading] = useState(false);
 
     /** Handlers */
-    const handleDeleteUser = () =>
+    const handleDeleteBook = () =>
         requestParser({
             promise: BooksServiceInstance.deleteBook(book.id),
             setIsLoading,
@@ -43,7 +43,7 @@ const DeleteBookButton = (props: DeleteBookButtonProps) => {
     return (
         <div
             className={styles["delete-book-button"]}
-            onClick={handleDeleteUser}
+            onClick={handleDeleteBook}
         >
             {isLoading ? (
                 <LoadingSpinner

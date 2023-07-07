@@ -78,11 +78,17 @@ class BooksService extends ApiService {
 
     /** Delete */
     deleteBook = (id: number) =>
-        this.delete(`${API_ENDPOINTS.books.deleteBook}/${id}`).then((res) => {
-            pushAlert("Book deleted successfully", "success");
+        this.delete(`${API_ENDPOINTS.books.deleteBook}/${id}`)
+            .then((res) => {
+                pushAlert("Book deleted successfully", "success");
 
-            throw res;
-        });
+                return res;
+            })
+            .catch((err) => {
+                pushAlert("Error while deleting book", "error");
+
+                throw err;
+            });
 }
 
 const BooksServiceInstance = new BooksService();
