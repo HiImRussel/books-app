@@ -18,7 +18,9 @@ const UserTableRow = (props: UserTableRowProps) => {
 
     return (
         <div className={styles["users-table-row"]}>
-            <span>{user.email}</span>
+            <span>
+                ID: {user.id} {user.email}
+            </span>
             <div className={styles["users-table-row__actions"]}>
                 <EditUserButton user={user} />
                 <DeleteUserButton user={user} />

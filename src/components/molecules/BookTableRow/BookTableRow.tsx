@@ -17,7 +17,9 @@ const BookTableRow = (props: BookTableRowProps) => {
 
     return (
         <div className={styles["book-table-row"]}>
-            <span>{book.title}</span>
+            <span>
+                ID: {book.id} {book.title}
+            </span>
 
             <div className={styles["book-table-row__actions"]}>
                 <EditBookButton id={book.id} />
